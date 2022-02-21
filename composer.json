@@ -1,0 +1,7 @@
+{
+  "name": "jess/store",
+  "type": "project",
+  "require": {
+    "scssphp/scssphp": "^1.10"
+  }
+}

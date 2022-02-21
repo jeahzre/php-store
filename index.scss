@@ -1,0 +1,141 @@
+$mobile-width: 600px;
+@mixin mobile {
+  @media only screen and (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 35px;
+  min-height: 100vh;
+  margin: 0
+}
+
+.product-nav {
+  width: 100%;
+  padding: 5px;
+  background-color: blueviolet;
+  display: flex;
+  justify-content: center;
+
+  .nav-list {
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+
+    @include mobile {
+      width: 80%;
+    }
+
+    .item {
+      list-style: none;
+
+      .link {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.header {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+
+  @include mobile {
+    grid-template-columns: unset;
+    row-gap: 15px;
+  }
+
+  .products-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.products-container {
+  width: 80vw;
+  display: grid;
+  grid-template-rows: 1fr 9fr;
+  row-gap: 15px;
+
+  .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 5px;
+    column-gap: 10px;
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product {
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 5px;
+      border: 1px solid purple;
+      position: relative;
+
+      .delete-checkbox {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 30px; 
+        height: 30px;
+      }
+    }
+  }
+}
+
+.add-product-form {
+  width: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 30px;
+
+  .top-message {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+    
+    &.show {
+      border: 1px solid #000;
+    }
+
+    &.success-message {
+      background-color: rgb(171, 255, 87);
+      box-shadow: 3px 3px 3px #7cd300;
+    }
+  
+    &.error-message {
+      background-color: rgb(255, 116, 144);
+    }
+  }
+
+  .add-product-table-form {
+    width: 100%;
+    table-layout: fixed;
+  }
+}

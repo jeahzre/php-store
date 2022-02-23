@@ -105,6 +105,6 @@ CREATE TABLE IF NOT EXISTS `dimension_value` (
 );
 
 INSERT IGNORE INTO `dimension_value` (sku, dimension_id, dimension_value) 
-VALUES ('333bba', 1, 8.77), ('333bba', 2, 5);
+VALUES ('333bba', 1, 8.77), ('333bba', 2, 5), ('333bba', 3, 5);
 
   

@@ -13,6 +13,7 @@ const addProduct = (e) => {
     const removeExistingMessage = () => {
       const element = document.getElementById("top-message");
       element.classList.remove("show", "error-message", "success-message");
+      element.innerHTML = '';
       const elements = document.querySelectorAll('[id$="-field-message"]');
       elements.forEach((element) => element.remove());
     };
@@ -25,7 +26,7 @@ const addProduct = (e) => {
       };
       renderErrorMessage(errorMessage);
     }
-    if (Object.keys(errorMessagesObject).length > 0) {
+    if (typeof(errorMessagesObject) === 'object' && errorMessagesObject !== null && Object.keys(errorMessagesObject).length > 0) {
       const renderErrorMessages = (errorMessagesObject) => {
         const createErrorNode = (field, innerHTML) => {
           const errorNode = document.createElement("div");

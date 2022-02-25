@@ -4,6 +4,30 @@ namespace Product;
 
 abstract class Product
 {
-  abstract protected function getAttribute();
-  abstract protected function getAttributeDescription();
+  public $attribute, $attributes, $attributeDescription;
+
+  public function getAttribute()
+  {
+    return $this->attribute;
+  }
+
+  public function getAttributeDescription()
+  {
+    return $this->attributeDescription;
+  }
+  
+  public function getAttributes() {
+    if (isset($this->attributes)) {
+      return $this->attributes;
+    } else {
+      return $this->attribute;
+    }
+  }
+
+  public function getProductTypeForm($JSONObject)
+  {
+    $JSONObject->attribute = $this->getAttributes();
+    $JSONObject->attributeDescription = $this->getAttributeDescription();
+    return $JSONObject;
+  }
 }

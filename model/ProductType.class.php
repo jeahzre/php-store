@@ -1,10 +1,10 @@
 <?php
 
-namespace ProductType;
+namespace Model\ProductType;
 
 require_once 'Product.class.php';
 
-use Product\Product;
+use Model\Product\Product;
 
 class DVD extends Product
 {

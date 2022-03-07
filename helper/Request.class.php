@@ -1,19 +1,15 @@
 <?php
 
-class Form
+namespace Helper;
+
+class Request
 {
   // POST method variable values
-  public $posts = [
-    "sku",
-    "product_name",
-    "price",
-    "product_type",
-    "size",
-    "weight",
-    "height",
-    "width",
-    "length"
-  ];
+  public function __construct($posts=[], $gets=[])
+  {
+    $this->posts = $posts;
+    $this->gets = $gets;
+  }
 
   public function process_input($data)
   {
@@ -30,6 +26,15 @@ class Form
         // If form data comes from form submit
         $varValue = $this->process_input($_POST[$var]);
         $_POST[$var] = $varValue;
+      }
+    }
+  }
+
+  public function modifyGetValue() {
+    foreach ($this->gets as $var)  {
+      if (isset($_GET[$var])) {
+        $varValue = $this->process_input($_GET[$var]);
+        $_GET[$var] = $varValue;
       }
     }
   }

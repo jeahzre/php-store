@@ -1,6 +1,6 @@
 <?php
 
-namespace Product;
+namespace Model\Product;
 
 abstract class Product
 {
@@ -24,10 +24,11 @@ abstract class Product
     }
   }
 
-  public function getProductTypeForm($JSONObject)
-  {
-    $JSONObject->attribute = $this->getAttributes();
-    $JSONObject->attributeDescription = $this->getAttributeDescription();
-    return $JSONObject;
-  }
+  // public function getProductTypeForm()
+  // {
+  //   $JSONObject = new \stdClass();
+  //   $JSONObject->attribute = $this->getAttributes();
+  //   $JSONObject->attributeDescription = $this->getAttributeDescription();
+  //   return $JSONObject;
+  // }
 }

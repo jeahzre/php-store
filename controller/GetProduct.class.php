@@ -1,4 +1,10 @@
 <?php 
+
+namespace Controller;
+use \PDO;
+use \PDOException;
+use Model\ProductQuery;
+
 class GetProduct
 {
   function __construct($conn)

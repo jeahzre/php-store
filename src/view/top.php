@@ -16,7 +16,7 @@
     $compiler = new Compiler();
 
     echo $compiler
-      ->compileString(file_get_contents("index.scss"))
+      ->compileString(file_get_contents("{$root}/src/css/index.scss"))
       ->getCss();
     ?>
   </style>

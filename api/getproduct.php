@@ -1,8 +1,7 @@
 <?php
+require_once 'middleware.php';
 
-require_once "{$_SERVER["DOCUMENT_ROOT"]}/init/index.php";
-require_once 'GetProduct.class.php';
-require_once 'ProductQuery.class.php';
+use Controller\GetProduct;
 
 $getProductObject = new GetProduct($conn);
 $result = $getProductObject->getProduct();

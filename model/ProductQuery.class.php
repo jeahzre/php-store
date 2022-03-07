@@ -1,5 +1,7 @@
 <?php
 
+namespace Model;
+
 class ProductQuery
 {
   public function getProductsQuery()

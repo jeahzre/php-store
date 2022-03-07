@@ -1,17 +1,26 @@
 <?php
-require_once "{$_SERVER["DOCUMENT_ROOT"]}/init/index.php";
-spl_autoload_register(function ($class) {
-  $parts = explode('\\', $class);
-  require $parts[0] . '.class.php';
-});
+require_once 'middleware.php';
 
-// JSON Object to pass to JS as response
-$JSONObject = new stdClass();
+use Helper\Request;
+use Controller\AddProduct;
 
-$form = new Form();
+$posts = [
+  "sku",
+  "product_name",
+  "price",
+  "product_type",
+  "size",
+  "weight",
+  "height",
+  "width",
+  "length"
+];
+
+$form = new Request($posts);
 $form->modifyPostValue();
-$addProductObject = new AddProduct($conn, $JSONObject);
-$modifiedJSONObject = $addProductObject->addProduct();
+$addProductObject = new AddProduct($conn);
+// JSON Object to pass to JS as response
+$JSONObject = $addProductObject->addProduct();
 
 // Pass JSON Object
-echo json_encode($modifiedJSONObject);
+echo json_encode($JSONObject);

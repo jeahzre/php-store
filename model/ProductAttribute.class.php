@@ -1,6 +1,6 @@
 <?php
 
-namespace ProductAttribute;
+namespace Model\ProductAttribute;
 
 abstract class ProductAttribute
 {

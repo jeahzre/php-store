@@ -1,6 +1,6 @@
 <!-- Form name & input(input, select tag) id attribute, option value use underscore seperated naming for easier accessing object property of input name in PHP and its value in JS-->
 <!-- <iframe name="exiter" style="display:none;"></iframe> -->
-<?php require_once 'top.php' ?>
+<?php require_once 'src/view/top.php' ?>
 <form action="/api/addproduct.php" method="post" class="add-product-form" id="product_form">
   <div class="header">
     <div class="title">Product Add</div>
@@ -65,7 +65,7 @@
 <?php
 $jsFileDependencies = array('ajax', 'form');
 foreach ($jsFileDependencies as $jsFileDependency) {
-  echo "<script src='{$jsFileDependency}.js'></script>";
+  echo "<script src='/src/js/{$jsFileDependency}.js'></script>";
 }
 ?>
 <script>
@@ -88,5 +88,5 @@ foreach ($jsFileDependencies as $jsFileDependency) {
     attributeForm.appendChild(trElement);
   }
 </script>
-<script src="/add-product.js"></script>
-<?php require_once 'bottom.php' ?>
+<script src="/src/js/add-product.js"></script>
+<?php require_once 'src/view/bottom.php' ?>

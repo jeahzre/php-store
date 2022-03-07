@@ -1,4 +1,10 @@
 <?php 
+
+namespace Controller;
+use \Exception;
+use \PDOException;
+use Model\ProductQuery;
+
 class DeleteProduct
 {
   function __construct($conn)

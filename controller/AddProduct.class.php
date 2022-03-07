@@ -1,10 +1,20 @@
 <?php
+
+namespace Controller;
+
+use \Exception;
+use \PDOException;
+use \stdClass;
+use \PDO;
+use Model\ProductAttributeQuery;
+use Model\ProductQuery;
+
 class AddProduct
 {
-  function __construct($conn, $JSONObject)
+  function __construct($conn)
   {
     $this->conn = $conn;
-    $this->JSONObject = $JSONObject;
+    $this->JSONObject = new stdClass();
     $this->productAttributeQuery = new ProductAttributeQuery();
     $this->productQuery = new ProductQuery();
     $this->addErrorMessages();
@@ -37,7 +47,7 @@ class AddProduct
   function getMandatoryInputs()
   {
     // Each $mandatoryInputs same as form input names
-    $productTypeClassName = "ProductType\\{$_POST['product_type']}";
+    $productTypeClassName = "Model\ProductType\\{$_POST['product_type']}";
     $productType = new $productTypeClassName();
     $productAttribute = $productType->getAttributes();
     $staticMandatoryInputs = ['sku', 'product_name', 'price', 'product_type'];
@@ -94,7 +104,7 @@ class AddProduct
   function getProductAttribute()
   {
     $productType = $_POST["product_type"]; // example: DVD, Furniture, and Book
-    $productTypeClassName = "ProductType\\$productType";
+    $productTypeClassName = "Model\ProductType\\$productType";
     $productTypeObject = new $productTypeClassName();
     $productAttribute = $productTypeObject->getAttribute(); // example: size, weight, height, width, and length
     return $productAttribute;
@@ -104,7 +114,7 @@ class AddProduct
   {
     $productAttribute = $this->getProductAttribute();
     $firstLetterUpProductAttribute = ucwords($productAttribute);
-    $productAttributeClassName = "ProductAttribute\\{$firstLetterUpProductAttribute}";
+    $productAttributeClassName = "Model\ProductAttribute\\{$firstLetterUpProductAttribute}";
     $productAttributeObject = new $productAttributeClassName();
     return $productAttributeObject;
   }
@@ -177,7 +187,6 @@ class AddProduct
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     if ($row['NumberOfProducts']) {
       $this->JSONObject->errorMessage = 'ID has already exists';
-      throw new Exception();
     }
   }
 }

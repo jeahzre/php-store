@@ -1,9 +1,16 @@
 <?php
-$q = $_GET["q"];
-require_once 'ProductType.class.php';
 
-$JSONObject = new stdClass();
-$className = "ProductType\\{$q}";
-$productType = new $className();
-$modifiedJSONObject = $productType->getProductTypeForm($JSONObject);
+require_once 'middleware.php';
+
+use Helper\Request;
+use Controller\ChangeProductType;
+
+$gets = ['q'];
+$requestObject = new Request;
+$requestObject->modifyGetValue($gets);
+
+$q = $_GET['q'];
+
+$changeProductTypeObject = new ChangeProductType();
+$JSONObject = $changeProductTypeObject->getProductTypeForm($q);
 echo json_encode($JSONObject);

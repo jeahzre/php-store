@@ -1,8 +1,7 @@
 <?php
+require_once 'middleware.php';
 
-require_once "{$_SERVER["DOCUMENT_ROOT"]}/init/index.php";
-require_once 'ProductQuery.class.php';
-require_once 'DeleteProduct.class.php';
+use Controller\DeleteProduct;
 
 if (
   isset($_POST["delete_product"]) &&
